@@ -74,7 +74,7 @@ const renderPlanet = planet => {
     gravitySpan.textContent = planet?.gravity;
     orbitalPeriodSpan.textContent = planet?.orbital_period;
     populationSpan.textContent = planet?.population;
-    const residentsLis = planet?.films?.map(res => `<li><a href="/film.html?id=${res.id}">${res.title}</li>`);
+    const residentsLis = planet?.characters?.map(res => `<li><a href="/character.html?id=${res.id}">${res.name}</li>`);
     residentsUl.innerHTML = residentsLis.join("");
     const filmsLis = planet?.films?.map(film => `<li><a href="/film.html?id=${film.id}">${film.title}</li>`);
     filmsUl.innerHTML = filmsLis.join("");
