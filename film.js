@@ -64,13 +64,13 @@ async function getFilm(id) {
     document.title = `SWAPI - ${film.title}`;  // Just to make the browser tab say their name
     title.textContent = film.title;
     
-    for(var i = 0; i < film.planets.length; i++)
-    theplanet.textContent = theplanet.textContent + ", " + film.planets[i].name;
+    //for(var i = 0; i < film.planets.length; i++)
+   // theplanet.textContent = theplanet.textContent + ", " + film.planets[i].name;
     
-    for(var i = 0; i < film.characters.length; i++)
-      {
+   // for(var i = 0; i < film.characters.length; i++)
+      ////{
         
-        chars.textContent = chars.textContent + ", " + film.characters[i].name;
+        ///chars.textContent = chars.textContent + ", " + film.characters[i].name;
       }
       
       const test = film?.planets?.map(filming => `<li><a href="/planet.html?id=${filming.id}">${filming.name}</li>`)
