@@ -1,10 +1,9 @@
 let characters = [];
 let filmMain = "";
 let planets = [];
-let nameH1;
-let birthYearSpan;
-let heightSpan;
-let massSpan;
+let title;
+let theplanet;
+let chars;
 let filmsDiv;
 let planetDiv;
 
@@ -12,6 +11,13 @@ const baseUrl = `https://swapi2.azurewebsites.net/api`;
 
 // Runs on page load
 addEventListener('DOMContentLoaded', () => {
+  title = document.querySelector('h1#name');
+  chars = document.querySelector('span#chars');
+  mainSpace = document.querySelector('#planets>ul');
+  //massSpan = document.querySelector('span#mass');
+  //heightSpan = document.querySelector('span#height');
+  theplanet = document.querySelector('span#homeworld');
+  charactUI = document.querySelector('#films>ul');
   const sp = new URLSearchParams(window.location.search)
   const id = sp.get('id')
   getFilm(id)
@@ -54,14 +60,26 @@ async function getFilm(id) {
 
   //Chracters and planets must be displayed 
   const renderCharacter = film => {
-    document.title = `SWAPI - ${film?.name}`;  // Just to make the browser tab say their name
-    nameH1.textContent = film?.planets;
-    heightSpan.textContent = film?.characters;
-    massSpan.textContent = film?.mass;
-    birthYearSpan.textContent = film?.birth_year;
-    homeworldSpan.innerHTML = `<a href="/planet.html?id=${film?.homeworld.id}">${character?.homeworld.name}</a>`;
-    const filmsLis = film?.films?.map(film => `<li><a href="/film.html?id=${film.id}">${film.title}</li>`)
-    filmsUl.innerHTML = filmsLis.join("");
+    
+    document.title = `SWAPI - ${film.title}`;  // Just to make the browser tab say their name
+    title.textContent = film.title;
+    
+    for(var i = 0; i < film.planets.length; i++)
+    theplanet.textContent = theplanet.textContent + ", " + film.planets[i].name;
+    
+    for(var i = 0; i < film.characters.length; i++)
+      {
+        
+        chars.textContent = chars.textContent + ", " + film.characters[i].name;
+      }
+      
+      const test = film?.planets?.map(filming => `<li><a href="/planet.html?id=${filming.id}">${filming.name}</li>`)
+    //alert(test.join(""))
+      mainSpace.innerHTML = test.join("");
+    
+    const filmsLis = film?.characters?.map(filming => `<li><a href="/character.html?id=${filming.id}">${filming.name}</li>`)
+    
+    charactUI.innerHTML = filmsLis.join("");
   }
 
 
