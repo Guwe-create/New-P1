@@ -7,6 +7,10 @@ let chars;
 let filmsDiv;
 let planetDiv;
 
+let direct;
+let release;
+let episode;
+
 const baseUrl = `https://swapi2.azurewebsites.net/api`;
 
 // Runs on page load
@@ -14,6 +18,9 @@ addEventListener('DOMContentLoaded', () => {
   title = document.querySelector('h1#name');
   chars = document.querySelector('span#chars');
   mainSpace = document.querySelector('#planets>ul');
+  direct = document.querySelector('span#direct');
+  release = document.querySelector('span#release');
+  episode = document.querySelector('span#episode');
   //massSpan = document.querySelector('span#mass');
   //heightSpan = document.querySelector('span#height');
   theplanet = document.querySelector('span#homeworld');
@@ -63,6 +70,12 @@ async function getFilm(id) {
     
     document.title = `SWAPI - ${film.title}`;  // Just to make the browser tab say their name
     title.textContent = film.title;
+    
+    direct.textContent = film.director;
+    release.textContent = film.release_date;
+    episode.textContent = film.episode_id;
+
+    
     
     //for(var i = 0; i < film.planets.length; i++)
    // theplanet.textContent = theplanet.textContent + ", " + film.planets[i].name;
